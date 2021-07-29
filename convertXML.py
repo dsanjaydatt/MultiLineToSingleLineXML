@@ -4,13 +4,15 @@ import os
 import datetime
 
 #change the path of xml input directory
+#for windows
+#for linux give normal path without r
 path = r"E:\xml"
 os.chdir(path)
 
 def read_xml_file(file_path):
     f = open(file_path, 'r')
     lines = f.readlines()
-    mystr = ' '.join([line.strip() for line in lines])
+    mystr = ''.join([line.strip() for line in lines])
     time_now  = datetime.datetime.now().strftime('%m_%d_%Y_%H_%M_%S')
 #change the directory wherever you want to save the output.
 #Note that output directory should be different from your xml input directory.
@@ -31,4 +33,6 @@ for file in os.listdir():
 
         read_xml_file(file_path)
     else:
-        print('Unsupported file type Found')
+        print('Unsupported file type Found.Processing supported files only..')
+
+print("Conversion completed!")
